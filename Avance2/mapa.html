@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Puntos de Recolección</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyJby_BJKvqtkd6caLN27erAQF4cUMWoI"></script> <!-- Reemplaza con tu clave de API -->
+    <script>
+        function initMap() {
+            var mapOptions = {
+                center: { lat: 9.934739, lng: -84.087502 },
+                zoom: 12
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var puntos = [
+                { lat: 9.934739, lng: -84.087502, title: "Punto de Recolección 1" },
+                { lat: 9.936789, lng: -84.085402, title: "Punto de Recolección 2" }
+            ];
+
+            puntos.forEach(function(punto) {
+                new google.maps.Marker({
+                    position: { lat: punto.lat, lng: punto.lng },
+                    map: map,
+                    title: punto.title
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <h2>Mapa de Puntos de Recolección</h2>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+</body>
+</html>
