@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+nav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #0634ff; 
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #00b7ff;
+}
+
+.btnIniciarSesion {
+    background-color: #0634ff;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+.btnIniciarSesion:hover {
+    background-color: #00b7ff;
+}
