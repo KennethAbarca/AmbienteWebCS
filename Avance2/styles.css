@@ -276,3 +276,17 @@ section {
     max-width: 500px;
     margin: 0 auto;
 }
+.listaCategoria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.listaCategoria a {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s;
+}

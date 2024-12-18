@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Buscar recetas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -11,10 +12,27 @@
     </header>
     <h2>Explorar recetas</h2>
     <section id="buscar">
-        <form action="buscar_recetas.php" method="POST">
+        <form id="buscarForm" action="buscar_recetas.php" method="POST">
             <input type="text" name="ingrediente" placeholder="Ingrediente a punto de caducar" required>
             <button type="submit">Buscar</button>
         </form>
     </section>
+    <div id="resultados"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#buscarForm").submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    url: "buscar_recetas.php",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function(data){
+                        $("#resultados").html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
