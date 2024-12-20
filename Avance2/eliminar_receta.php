@@ -1,13 +1,22 @@
 <?php
-include 'db_config.php';
+include 'includes/db_config.php';
+
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    $id = (int)$_GET['id'];
     $sql = "DELETE FROM recetas WHERE id=$id";
     if ($conn->query($sql) === TRUE) {
-        echo "Receta eliminada con éxito";
+        $mensaje = "Receta eliminada con éxito";
     } else {
-        echo "Error: " . $conn->error;
+        $mensaje = "Error: " . $conn->error;
     }
+} else {
+    $mensaje = "ID no especificado.";
 }
+
 $conn->close();
+
+
+header("Location: eliminar_receta_resultado.html?mensaje=" . urlencode($mensaje));
+exit();
 ?>
+
