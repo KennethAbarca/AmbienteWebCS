@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Receta</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="recetas.html" class="back-link">← Volver a recetas</a>
+    </header>
+    <h2>Actualizar Receta</h2>
+    <?php if (!empty($mensaje)): ?>
+        <p><?php echo htmlspecialchars($mensaje); ?></p>
+    <?php endif; ?>
+    <form action="update_receta.php?id=<?php echo $receta['id']; ?>" method="POST">
+        <input type="hidden" name="id" value="<?php echo $receta['id']; ?>">
+        <label for="nombreReceta">Nombre de la receta:</label>
+        <input type="text" id="nombreReceta" name="nombreReceta" value="<?php echo htmlspecialchars($receta['nombre']); ?>" required>
+
+        <label for="instrucciones">Instrucciones:</label>
+        <textarea id="instrucciones" name="instrucciones" required><?php echo htmlspecialchars($receta['instrucciones']); ?></textarea>
+
+        <label for="ingredientes">Lista de ingredientes:</label>
+        <input type="text" id="ingredientes" name="ingredientes" value="<?php echo htmlspecialchars($receta['ingredientes']); ?>" required>
+
+        <button type="submit">Actualizar Receta</button>
+    </form>
+</body>
+</html>
