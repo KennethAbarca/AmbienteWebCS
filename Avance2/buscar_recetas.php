@@ -1,17 +1,28 @@
 <?php
-include 'db_config.php';
+include 'includes/db_config.php';
 
-$ingrediente = $_POST['ingrediente'];
-$sql = "SELECT nombre, instrucciones FROM recetas WHERE ingredientes LIKE '%$ingrediente%'";
-$result = $conn->query($sql);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['ingrediente'])) {
+        $ingrediente = $conn->real_escape_string($_POST['ingrediente']);
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "<h3>" . $row['nombre'] . "</h3><p>" . $row['instrucciones'] . "</p>";
+        $sql = "SELECT nombre, instrucciones FROM recetas WHERE ingredientes LIKE '%$ingrediente%'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<h2>Recetas encontradas:</h2>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='receta'>";
+                echo "<h3>" . htmlspecialchars($row['nombre']) . "</h3>";
+                echo "<p><strong>Instrucciones:</strong> " . htmlspecialchars($row['instrucciones']) . "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No se encontraron recetas con el ingrediente proporcionado.</p>";
+        }
+    } else {
+        echo "<p>Por favor, ingresa un ingrediente.</p>";
     }
+    $conn->close();
 } else {
-    echo "No se encontraron recetas con ese ingrediente.";
+    echo "<p>Método no permitido.</p>";
 }
-
-$conn->close();
-?>
