@@ -11,9 +11,11 @@ $sql = "INSERT INTO donaciones (nombre_donante, alimento, cantidad, fecha, punto
         VALUES ('$nombre_donante', '$alimento', '$cantidad', '$fecha', '$punto_recoleccion')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Donación registrada con éxito";
+    header("Location: donacion.html?status=success");
+    exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    header("Location: donacion.html?status=error");
+    exit();
 }
 
 $conn->close();

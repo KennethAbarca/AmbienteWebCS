@@ -7,12 +7,40 @@
 </head>
 <body>
     <h2>Registrarse</h2>
-    <form action="registro.php" method="POST">
+    <form action="DAL/Login.php" method="POST">
         <input type="text" name="nombre" placeholder="Nombre Completo" required>
         <input type="email" name="email" placeholder="Correo Electrónico" required>
         <input type="password" name="password" placeholder="Contraseña" required>
         <input type="password" name="password" placeholder="Confirmar Contraseña" required>
         <button type="submit">Registrarse</button>
+    </form>
+    <form action="../model/registro_verificacion.php" method="POST" id="registros">
+        <div class="form">
+            <h2>Registro de usuarios</h2>
+
+            <div class="form-element">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario1" name="usuario1" placeholder="Ingresar usuario">
+                <div class="error"></div>
+                <div class="success"></div>
+            </div>
+
+            <div class="form-element">
+                <label for="email">Correo electronico</label>
+                <input type="text" id="email1" name="correo1" placeholder="Ingresar correo electronico">
+                <div class="error"></div>
+            </div>
+
+            <div class="form-element">
+                <label for="contra">Contraseña</label>
+                <input type="password" id="contra1" name="contra1" placeholder="Ingresar contraseña">
+                <div class="error"></div>
+            </div>
+
+            <div class="form-element">
+                <button type="button" id="registrar" name="enviar_registro">Registrarse</button>
+            </div>
+        </div>
     </form>
     <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
 </body>

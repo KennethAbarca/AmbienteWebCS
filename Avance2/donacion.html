@@ -17,5 +17,20 @@
         <input type="text" name="punto_recoleccion" placeholder="Punto de Recolección" required>
         <button type="submit">Donar</button>
     </form>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        if (status === 'success') {
+            alert('Donación registrada con éxito. ¡Gracias por tu apoyo!');
+        } else if (status === 'error') {
+            alert('Hubo un error al registrar la donación. Por favor, inténtalo nuevamente.');
+        }
+
+        if (status) {
+            history.replaceState(null, '', window.location.pathname);
+        }
+    </script>
 </body>
 </html>
