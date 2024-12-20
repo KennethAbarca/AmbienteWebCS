@@ -2,29 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar recetas</title>
+    <title>Agregar Recetas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <a href="index.html" class="back-link">← Volver al inicio</a>
+        <a href="recetas.html" class="back-link">← Volver al inicio</a>
     </header>
-    <h2>Explorar recetas</h2>
+    <h2>Agregar Nueva Receta</h2>
     <section>
-        <h3>Agregar receta</h3>
+        <!-- Mostrar mensaje de éxito o error -->
+        <?php if (!empty($mensaje)): ?>
+            <p><?php echo htmlspecialchars($mensaje); ?></p>
+        <?php endif; ?>
         <form action="nueva_receta.php" method="POST">
-
             <label for="nombreReceta">Nombre de la receta:</label>
-            <input type="text" id="nombreReceta" name="nombreReceta" placeholder="Nombre de la receta" required>
-
+            <input type="text" id="nombreReceta" name="nombreReceta" required>
+        
             <label for="instrucciones">Instrucciones:</label>
-            <textarea id="instrucciones" name="instrucciones" placeholder="Instrucciones" required></textarea>
-
-            <label for="ingredientes">Lista de ingredientes:</label>
-            <input type="text" id="ingredientes" name="ingredientes" placeholder="Lista de ingredientes" required>
-
-            <button type="submit">Agregar receta</button>
+            <textarea id="instrucciones" name="instrucciones" required></textarea>
+        
+            <label for="ingredientes">Ingredientes:</label>
+            <input type="text" id="ingredientes" name="ingredientes" required>
+        
+            <button type="submit">Agregar Receta</button>
         </form>
+        
     </section>
 </body>
 </html>
