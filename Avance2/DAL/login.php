@@ -23,9 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } else {
             $error_message = "Correo electrónico o contraseña incorrectos.";
+            header("Location: /ProyectoAmbienteWebServidor/AmbienteWebCS/Avance2/login.html");
+            exit();
         }
     } else {
         $error_message = "Correo electrónico o contraseña incorrectos.";
+        header("Location: /ProyectoAmbienteWebServidor/AmbienteWebCS/Avance2/login.html");
+            exit();
     }
 }
 
