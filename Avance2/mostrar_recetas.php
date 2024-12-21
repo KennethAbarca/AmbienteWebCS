@@ -13,6 +13,7 @@ if ($result->num_rows > 0) {
 foreach ($recetas as $receta) {
     echo "<h3>" . $receta['nombre'] . "</h3>";
     echo "<p>" . $receta['instrucciones'] . "</p>";
+    echo "<p>" . $receta['ingredientes'] . "</p>";
 }
 
 $conn->close();

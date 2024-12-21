@@ -1,32 +1,19 @@
 <?php
-// Mostrar errores en desarrollo
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-include 'includes/db_config.php';
+include 'db_config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $stmt = $conn->prepare("INSERT INTO recetas (nombre, instrucciones, ingredientes) VALUES (?, ?, ?)");
-    if (!$stmt) {
-        die("Error en la preparación de la consulta: " . $conn->error);
-    }
-
-    $nombre = $_POST['nombreReceta'];
+    $nombreReceta = $_POST['nombreReceta'];
     $instrucciones = $_POST['instrucciones'];
     $ingredientes = $_POST['ingredientes'];
-    
-    
-    $stmt->bind_param("sss", $nombre, $instrucciones, $ingredientes);
 
-    if ($stmt->execute()) {
-        $mensaje = "Receta agregada con éxito.";
+    $sql = "INSERT INTO recetas (nombre, instrucciones, ingredientes) VALUES ('$nombreReceta', '$instrucciones', '$ingredientes')";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: nuevaReceta.html?status=success");
+        exit();
     } else {
-        $mensaje = "Error al agregar la receta: " . $stmt->error;
+        header("Location: nuevaReceta.html?status=error");
+        exit();
     }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    $mensaje = "Método no permitido.";
 }
+$conn->close();
 ?>

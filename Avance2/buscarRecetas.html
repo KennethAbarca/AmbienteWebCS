@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Recetas</title>
+    <title>Buscar recetas</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -10,7 +10,7 @@
     <header>
         <a href="index.html" class="back-link">← Volver al inicio</a>
     </header>
-    <h2>Buscar recetas por ingrediente</h2>
+    <h2>Explorar recetas</h2>
     <section id="buscar">
         <form id="buscarForm" action="buscar_recetas.php" method="POST">
             <input type="text" name="ingrediente" placeholder="Ingrediente a punto de caducar" required>
@@ -22,16 +22,13 @@
     <script>
         $(document).ready(function(){
             $("#buscarForm").submit(function(e){
-                e.preventDefault(); 
+                e.preventDefault();
                 $.ajax({
                     url: "buscar_recetas.php",
                     type: "POST",
                     data: $(this).serialize(),
                     success: function(data){
                         $("#resultados").html(data);
-                    },
-                    error: function(){
-                        $("#resultados").html("<p>Error al buscar las recetas. Intenta nuevamente.</p>");
                     }
                 });
             });

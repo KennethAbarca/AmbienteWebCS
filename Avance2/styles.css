@@ -248,7 +248,7 @@ textarea {
 }
 
 textarea {
-    resize: vertical; /* Allows vertical resizing */
+    resize: vertical;
     min-height: 100px;
 }
 
@@ -342,4 +342,44 @@ section {
 }
 .menuRecetas:hover .dropdown-content {
     display: block;
+}
+
+table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+table tr:hover {
+    background-color: #e2f1f8;
+    cursor: pointer;
+}
+
+table td a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table td a:hover {
+    color: #2980b9;
+    text-decoration: underline;
 }

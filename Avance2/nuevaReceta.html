@@ -2,32 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Recetas</title>
+    <title>Agregar recetas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <a href="recetas.html" class="back-link">← Volver al inicio</a>
+        <a href="index.html" class="back-link">← Volver al inicio</a>
     </header>
-    <h2>Agregar Nueva Receta</h2>
+    <h2>Explorar recetas</h2>
     <section>
-        <!-- Mostrar mensaje de éxito o error -->
-        <?php if (!empty($mensaje)): ?>
-            <p><?php echo htmlspecialchars($mensaje); ?></p>
-        <?php endif; ?>
+        <h3>Agregar receta</h3>
         <form action="nueva_receta.php" method="POST">
+
             <label for="nombreReceta">Nombre de la receta:</label>
-            <input type="text" id="nombreReceta" name="nombreReceta" required>
-        
+            <input type="text" id="nombreReceta" name="nombreReceta" placeholder="Nombre de la receta" required>
+
             <label for="instrucciones">Instrucciones:</label>
-            <textarea id="instrucciones" name="instrucciones" required></textarea>
-        
-            <label for="ingredientes">Ingredientes:</label>
-            <input type="text" id="ingredientes" name="ingredientes" required>
-        
-            <button type="submit">Agregar Receta</button>
+            <textarea id="instrucciones" name="instrucciones" placeholder="Instrucciones" required></textarea>
+
+            <label for="ingredientes">Lista de ingredientes:</label>
+            <input type="text" id="ingredientes" name="ingredientes" placeholder="Lista de ingredientes" required>
+
+            <button type="submit">Agregar receta</button>
         </form>
-        
     </section>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        if (status === 'success') {
+            alert('Receta registrada con éxito. ');
+        } else if (status === 'error') {
+            alert('Hubo un error al registrar la receta. Por favor, inténtalo nuevamente.');
+        }
+
+        if (status) {
+            history.replaceState(null, '', window.location.pathname);
+        }
+    </script>
 </body>
 </html>

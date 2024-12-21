@@ -2,24 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>recetasPopulares</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Recetas</title>
     <link rel="stylesheet" href="styles.css">
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
+<header>
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+</header>
 <body>
-    <header>
-        <a href="index.html" class="back-link">← Volver al inicio</a>
-    </header>
-    <h2>Explorar recetas</h2>
-    <section id="categorias">
-        <h3>Categorías</h3>
-        <ul class="listaCategoria">
-            <li><a href="categoria.php?categoria=vegetales">Vegetales</a></li>
-            <li><a href="categoria.php?categoria=frutas">Frutas</a></li>
-            <li><a href="categoria.php?categoria=verduras">Verduras</a></li>
-            <li><a href="categoria.php?categoria=enlatados">Enlatados</a></li>
-            <li><a href="categoria.php?categoria=empaquetados">Empaquetados</a></li>
-        </ul>
-    </section>
+    <h1>Gestión de Recetas</h1>
+
+    <h2>Lista de Recetas</h2>
+
+    <table id="recetasTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Ingredientes</th>
+                <th>Instrucciones</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las recetas se cargarán aquí con jQuery -->
+        </tbody>
+    </table>
+
+    <script src="recetas.js"></script>  
 </body>
 </html>
